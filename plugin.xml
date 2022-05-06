@@ -9,7 +9,7 @@
 
     <description>Prevent apps from going to sleep in background.</description>
 
-    <repo>https://github.com/katzer/cordova-plugin-background-mode.git</repo>
+    <repo>https://github.com/futurecloudtech/cordova-plugin-background-mode.git</repo>
 
     <keywords>appplant, background</keywords>
 
@@ -71,7 +71,7 @@
         </config-file>
 
         <config-file target="AndroidManifest.xml" parent="/manifest/application">
-            <service android:name="de.appplant.cordova.plugin.background.ForegroundService" />
+            <service android:name="de.appplant.cordova.plugin.background.ForegroundService" android:stopWithTask="false"/>
         </config-file>
 
         <config-file target="AndroidManifest.xml" parent="/manifest">
