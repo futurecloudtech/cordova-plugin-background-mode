@@ -103,12 +103,12 @@ public class ForegroundService extends Service {
     /**
      * No need to run headless on destroy.
      */
-    @Override
-    public void onDestroy()
-    {
-        super.onDestroy();
-        sleepWell();
-    }
+    // @Override
+    // public void onDestroy()
+    // {
+    //     super.onDestroy();
+    //     sleepWell();
+    // }
 
     /**
      * Prevent Android from stopping the background service automatically.
