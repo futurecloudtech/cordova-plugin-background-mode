@@ -150,18 +150,18 @@ public class BackgroundMode extends CordovaPlugin {
     public void onResume (boolean multitasking)
     {
         inBackground = false;
-        stopService();
+        // stopService();
     }
 
     /**
      * Called when the activity will be destroyed.
      */
-    @Override
-    public void onDestroy()
-    {
-        stopService();
-        android.os.Process.killProcess(android.os.Process.myPid());
-    }
+    // @Override
+    // public void onDestroy()
+    // {
+    //     stopService();
+    //     android.os.Process.killProcess(android.os.Process.myPid());
+    // }
 
     /**
      * Enable the background mode.
