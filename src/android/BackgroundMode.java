@@ -61,21 +61,21 @@ public class BackgroundMode extends CordovaPlugin {
     private ForegroundService service;
 
     // Used to (un)bind the service to with the activity
-    private final ServiceConnection connection = new ServiceConnection()
-    {
-        @Override
-        public void onServiceConnected (ComponentName name, IBinder service)
-        {
-            ForegroundBinder binder = (ForegroundBinder) service;
-            BackgroundMode.this.service = binder.getService();
-        }
+    // private final ServiceConnection connection = new ServiceConnection()
+    // {
+    //     @Override
+    //     public void onServiceConnected (ComponentName name, IBinder service)
+    //     {
+    //         ForegroundBinder binder = (ForegroundBinder) service;
+    //         BackgroundMode.this.service = binder.getService();
+    //     }
 
-        @Override
-        public void onServiceDisconnected (ComponentName name)
-        {
-            fireEvent(Event.FAILURE, "'service disconnected'");
-        }
-    };
+    //     @Override
+    //     public void onServiceDisconnected (ComponentName name)
+    //     {
+    //         fireEvent(Event.FAILURE, "'service disconnected'");
+    //     }
+    // };
 
     /**
      * Executes the request.
@@ -170,9 +170,9 @@ public class BackgroundMode extends CordovaPlugin {
     {
         isDisabled = false;
 
-        if (inBackground) {
+        // if (inBackground) {
             startService();
-        }
+        // }
     }
 
     /**
@@ -236,13 +236,13 @@ public class BackgroundMode extends CordovaPlugin {
     {
         Activity context = cordova.getActivity();
 
-        if (isDisabled || isBind)
-            return;
+        // if (isDisabled || isBind)
+        //     return;
 
         Intent intent = new Intent(context, ForegroundService.class);
 
         try {
-            context.bindService(intent, connection, BIND_AUTO_CREATE);
+            // context.bindService(intent, connection, BIND_AUTO_CREATE);
             fireEvent(Event.ACTIVATE, null);
             context.startService(intent);
         } catch (Exception e) {
@@ -264,7 +264,7 @@ public class BackgroundMode extends CordovaPlugin {
         if (!isBind) return;
 
         fireEvent(Event.DEACTIVATE, null);
-        context.unbindService(connection);
+        // context.unbindService(connection);
         context.stopService(intent);
 
         isBind = false;

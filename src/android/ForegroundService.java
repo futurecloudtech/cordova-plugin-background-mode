@@ -79,15 +79,15 @@ public class ForegroundService extends Service {
      * Class used for the client Binder.  Because we know this service always
      * runs in the same process as its clients, we don't need to deal with IPC.
      */
-    class ForegroundBinder extends Binder
-    {
-        ForegroundService getService()
-        {
-            // Return this instance of ForegroundService
-            // so clients can call public methods
-            return ForegroundService.this;
-        }
-    }
+    // class ForegroundBinder extends Binder
+    // {
+    //     ForegroundService getService()
+    //     {
+    //         // Return this instance of ForegroundService
+    //         // so clients can call public methods
+    //         return ForegroundService.this;
+    //     }
+    // }
 
     /**
      * Put the service in a foreground state to prevent app from being killed
@@ -143,16 +143,16 @@ public class ForegroundService extends Service {
     /**
      * Stop background mode.
      */
-    private void sleepWell()
-    {
-        stopForeground(true);
-        getNotificationManager().cancel(NOTIFICATION_ID);
+    // private void sleepWell()
+    // {
+    //     stopForeground(true);
+    //     getNotificationManager().cancel(NOTIFICATION_ID);
 
-        if (wakeLock != null) {
-            wakeLock.release();
-            wakeLock = null;
-        }
-    }
+    //     if (wakeLock != null) {
+    //         wakeLock.release();
+    //         wakeLock = null;
+    //     }
+    // }
 
     /**
      * Create a notification as the visible part to be able to put the service
@@ -240,10 +240,10 @@ public class ForegroundService extends Service {
     {
         boolean isSilent = settings.optBoolean("silent", false);
 
-        if (isSilent) {
-            stopForeground(true);
-            return;
-        }
+        // if (isSilent) {
+        //     stopForeground(true);
+        //     return;
+        // }
 
         Notification notification = makeNotification(settings);
         getNotificationManager().notify(NOTIFICATION_ID, notification);
