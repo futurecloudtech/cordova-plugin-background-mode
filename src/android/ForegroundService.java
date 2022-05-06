@@ -62,7 +62,7 @@ public class ForegroundService extends Service {
     private static final String NOTIFICATION_ICON = "icon";
 
     // Binder given to clients
-    private final IBinder binder = new ForegroundBinder();
+    // private final IBinder binder = new ForegroundBinder();
 
     // Partial wake lock to prevent the app from going to sleep when locked
     private PowerManager.WakeLock wakeLock;
