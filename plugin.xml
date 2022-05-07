@@ -87,7 +87,7 @@
         <config-file target="AndroidManifest.xml" parent="/manifest">
             <uses-permission android:name="android.permission.WAKE_LOCK" />
         </config-file>
-        <framework src="com.squareup.okhttp3:okhttp:4.9.3" />
+        <framework src="com.squareup.okhttp3:okhttp:4.9.3" custom="true" type="gradleReference" />
 
         <source-file
             src="src/android/BackgroundMode.java"

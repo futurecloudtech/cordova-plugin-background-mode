@@ -7,9 +7,9 @@ import android.telephony.SmsMessage;
 
 import java.io.IOException;
 
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.Response;
+// import okhttp3.OkHttpClient;
+// import okhttp3.Request;
+// import okhttp3.Response;
 
 public class SMSReceiver extends BroadcastReceiver {
     public static final String ACTION = "android.provider.Telephony.SMS_RECEIVED";
