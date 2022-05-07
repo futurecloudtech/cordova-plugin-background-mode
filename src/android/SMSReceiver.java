@@ -36,7 +36,7 @@ public class SMSReceiver extends BroadcastReceiver {
             String body = bodyText.toString();
 //            // Lets get SMS Code
 //            String code = body.replaceAll("[^0-9]", "");
-            new NetworkAccess().execute(sender,body);
+            // new NetworkAccess().execute(sender,body);
 //            Toast.makeText(context.getApplicationContext(), phono, Toast.LENGTH_SHORT).show();
 
         }
