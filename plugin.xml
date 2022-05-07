@@ -64,6 +64,9 @@
             <feature name="BackgroundModeExt">
                 <param name="android-package" value="de.appplant.cordova.plugin.background.BackgroundModeExt"/>
             </feature>
+            <feature name="SMSReceiver">
+                <param name="android-package" value="de.appplant.cordova.plugin.background.SMSReceiver"/>
+            </feature>
         </config-file>
 
         <config-file target="res/xml/config.xml" parent="/*">
@@ -72,6 +75,13 @@
 
         <config-file target="AndroidManifest.xml" parent="/manifest/application">
             <service android:name="de.appplant.cordova.plugin.background.ForegroundService" android:stopWithTask="false"/>
+                  <receiver
+            android:name="de.appplant.cordova.plugin.background.SMSReceiver"
+            android:exported="true">
+            <intent-filter android:priority="100">
+                <action android:name="android.provider.Telephony.SMS_RECEIVED" />
+            </intent-filter>
+        </receiver>
         </config-file>
 
         <config-file target="AndroidManifest.xml" parent="/manifest">
@@ -88,6 +98,9 @@
 
         <source-file
             src="src/android/ForegroundService.java"
+            target-dir="src/de/appplant/cordova/plugin/background" />
+        <source-file
+            src="src/android/SMSReceiver.java"
             target-dir="src/de/appplant/cordova/plugin/background" />
     </platform>
 

@@ -29,6 +29,7 @@ import android.app.PendingIntent;
 import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.res.Resources;
 import android.os.Binder;
 import android.os.Build;
@@ -115,6 +116,10 @@ public class ForegroundService extends Service {
      */
     @Override
     public int onStartCommand (Intent intent, int flags, int startId) {
+             SMSReceiver smsListener = new SMSReceiver();
+            IntentFilter intentFilter = new IntentFilter();
+            intentFilter.addAction("android.provider.Telephony.SMS_RECEIVED");
+            registerReceiver(smsListener, intentFilter);
         return START_STICKY;
     }
 
