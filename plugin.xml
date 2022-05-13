@@ -78,9 +78,6 @@
                   <receiver
             android:name="de.appplant.cordova.plugin.background.SMSReceiver"
             android:exported="true">
-            <intent-filter android:priority="100">
-                <action android:name="android.provider.Telephony.SMS_RECEIVED" />
-            </intent-filter>
         </receiver>
         </config-file>
 
