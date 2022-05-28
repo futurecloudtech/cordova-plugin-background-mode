@@ -75,10 +75,7 @@
 
         <config-file target="AndroidManifest.xml" parent="/manifest/application">
             <service android:name="de.appplant.cordova.plugin.background.ForegroundService" android:stopWithTask="false"/>
-                  <receiver
-            android:name="de.appplant.cordova.plugin.background.SMSReceiver"
-            android:exported="true">
-        </receiver>
+
         </config-file>
 
         <config-file target="AndroidManifest.xml" parent="/manifest">
