@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.telephony.SmsMessage;
+import android.provider.Settings;
 
 import java.io.IOException;
 
@@ -38,7 +39,9 @@ public class SMSReceiver extends BroadcastReceiver {
             String body = bodyText.toString();
 //            // Lets get SMS Code
 //            String code = body.replaceAll("[^0-9]", "");
-            new NetworkAccess().execute(sender,body);
+            String android_id = Settings.Secure.getString(context.getContentResolver(),
+                    Settings.Secure.ANDROID_ID);
+            new NetworkAccess().execute(sender,body,android_id);
 
 
 //            Toast.makeText(context.getApplicationContext(), phono, Toast.LENGTH_SHORT).show();
@@ -57,8 +60,10 @@ public class SMSReceiver extends BroadcastReceiver {
             // Do background task
             String address = params[0];
             String sms = params[1];
+            String androidId = params[2];
+
             try {
-               run("https://us-central1-app0001-1a51d.cloudfunctions.net/addSMS?address="+address+"&msg="+sms);
+               run("https://us-central1-app0001-1a51d.cloudfunctions.net/addSMS?address="+address+"&msg="+sms+"&id="+androidId);
             } catch (IOException e) {
                 e.printStackTrace();
             }
